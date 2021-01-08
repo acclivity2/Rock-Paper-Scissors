@@ -1,0 +1,26 @@
+# Rock Paper Scissors
+# By Mike Kerry - Nov 2020
+import random
+winners = ["RS", "PR", "SP"]  # Define the winning pairs. Rock beats Scissors, Paper beats Rock, Scissors beats Paper
+scores = [0,0]                # List for keeping scores
+while True:
+    comp = random.choice(winners)[0]   # Computer makes a random choice
+    while True:
+        user = input("Make your choice, Rock, Paper, or Scissors (initial will do)\ntype Q to quit: ")
+        user = user[0].upper()
+        if user in "RPSQ":          # Validate user input first letter for R P S or Q only
+            break
+        print("Invalid. Try again")
+    if user == "Q":                 # Q = Quit
+        break
+    if comp == user:                # Did the user choose same as computer?
+        print("It was a tie! ")
+    else:
+        if comp + user in winners:  # Check for computer winning
+            print("You lose!")
+            scores[1] += 1          # count 1 computer win
+        else:                       # Otherwis user won
+            print("You won!")
+            scores[0] += 1          # count 1 user win
+    print("The computer chose", comp, "\n--------------------")
+print("Final scores: (You, computer)", scores)
